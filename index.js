@@ -8,7 +8,7 @@ try {
     host:process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    database: process.env.DB_DATABASE,
   });
 
   const app = express();
@@ -20,12 +20,12 @@ try {
   });
 
   app.get("/api/users", (req, res, next) => {
-    pool.query("SELECT * FROM test.users", (err, rows, fields) => {
+    pool.query("SELECT * FROM users", (err, rows, fields) => {
       res.json(rows);
     });
   });
 
-  const port = process.env.PORT || 5000;
+  const port = process.env.PORT;
   app.listen(port, () => {
     console.log(`listening on port ${port}`);
   });
