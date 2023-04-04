@@ -20,7 +20,7 @@ try {
   });
 
   app.get("/api/users", (req, res, next) => {
-    pool.query("SELECT * FROM user", (err, rows, fields) => {
+    pool.query("SELECT * FROM test.users", (err, rows, fields) => {
       res.json(rows);
     });
   });
